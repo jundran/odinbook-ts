@@ -20,17 +20,13 @@ export default function PostCreate ({ refreshPosts, bannerHeader } : PostCreateP
 	const [image, setImage] = useState<string>('')
 	const fileName = useRef<string>('')
 
-	function handleSubmit (e: FormEvent<HTMLFormElement>) {
+	async function handleSubmit (e: FormEvent<HTMLFormElement>) {
 		e.preventDefault()
 
 		const formData = new FormData()
 		formData.append('user', user!._id)
 		formData.append('text', text)
-		if (image) {
-			dataUrlToBlob(image)
-				.then(image => { formData.append('file', image, fileName.current) })
-				.catch(() => { throw new Error('Failed to convert imageUrl to blob') })
-		}
+		if (image) formData.append('file', await dataUrlToBlob(image), fileName.current)
 
 		axios.post(import.meta.env.VITE_API + '/post', formData, {
 			headers: {
@@ -63,7 +59,7 @@ export default function PostCreate ({ refreshPosts, bannerHeader } : PostCreateP
 			<GridColumns>
 				<UserIcon profilePicture={user!.profilePicture} size='40px' />
 				<div>
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={e => void handleSubmit(e)}>
 						<div onDrop={e => { e.preventDefault() }}> {/* Prevent dragging images into editor */}
 							<ReactQuill theme="snow" value={text} onChange={handleEdit} />
 						</div>
