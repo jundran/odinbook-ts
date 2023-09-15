@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+		"strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+		/* Aliases are mapped in vite.config.ts. Paths object is only used to avoid errors in editor. */
+    "paths": {
+			"@components/*": ["./src/components/*"],
+			"@context/*": ["./src/context/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@styles/*": ["./src/styles/*"],
+			/* Cannot use just "@types" without error in editor */
+			"@databaseTypes": ["./src/types/database"],
+			"@socketTypes": ["./src/types/socket"],
+			"@utilities/*": ["./src/utilities/*"],
+			"@src/*": ["./src/*"],
+		}
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
