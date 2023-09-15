@@ -10,7 +10,7 @@ export default function Footer () {
 					target="_blank" rel="noopener noreferrer">
 					<img src={odinProject} alt="The Odin project" />
 				</a>
-				<a className='withsvg' href="https://github.com/jundran/odinbook"
+				<a className='withsvg' href="https://github.com/jundran/odinbook-ts"
 					target="_blank" rel="noopener noreferrer">
 					<img src={github} alt="Github" />
 					<span>Code</span>
