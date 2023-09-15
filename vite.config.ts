@@ -19,4 +19,3 @@ export default defineConfig({
 })
 
 // Vite version 4.4.9 will not run app with node 20.6
-// Using "node": ">=20.0.0 <=20.5.0" for now - see package.json
